@@ -12,6 +12,7 @@ load_dotenv()
 # Load the model
 model = HuggingFaceHub(
     repo_id="gpt2",
+    # repo_id="google/flan-ul2",
     model_kwargs={'temperature': 0.7, 'max_length':100}
 )
 
