@@ -34,8 +34,9 @@ TrackId	Name	Composer
 
 db = SQLDatabase.from_uri(
         db_uri,
-        # include_tables=["albums", "artists"], # only include these tables
-        include_tables=["customers"],
+        include_tables=["albums", "artists"], # only include these tables
+        # include_tables=["albums"]
+        # include_tables=["customers"],
         # sample_rows_in_table_info=2,
         # custom_table_info=custom_table_info
     )
@@ -75,10 +76,11 @@ print("Loading model...")
 # model = HuggingFacePipeline(pipeline)
 
 
-model = HuggingFaceHub(repo_id="bigcode/starcoderplus", model_kwargs={'temperature': 0.1, 'max_length':100})
+# model = HuggingFaceHub(repo_id="bigcode/starcoderplus", model_kwargs={'temperature': 0.1, 'max_length':100})
+# did not work lol
 
 # FINAL MODEL
-# model = HuggingFaceHub(repo_id="google/flan-t5-xxl", model_kwargs={'temperature': 0.1, 'max_length':100})
+model = HuggingFaceHub(repo_id="google/flan-t5-xxl", model_kwargs={'temperature': 0.1, 'max_length':256})
 
 print("-"*50)
 
@@ -89,5 +91,5 @@ print("-"*50)
 
 # Run the chain
 print("Running chain...")
-print(chain.run("How many customers are there?"))
-# print(chain.run("How many albums are there by Aerosmith?"))
+# print(chain.run("How many customers are there?"))
+print(chain.run("How many albums are there by Aerosmith?"))
